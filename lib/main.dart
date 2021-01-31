@@ -26,8 +26,8 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  var _id = "";
-  var _password = "";
+  var _id = TextEditingController();
+  var _password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -41,16 +41,13 @@ class _SignInPageState extends State<SignInPage> {
           children: [
             Container(
               margin: EdgeInsets.only(top: 24),
-              child: getTextField(
-                  "Username or email address", Icons.perm_identity, (value) {
-                _id = value;
-              }),
+              child: getTextField(_id, 
+                  "Username or email address", Icons.perm_identity),
             ),
             Container(
               margin: EdgeInsets.only(top: 16),
-              child: getTextField("Password", Icons.vpn_key_outlined, (value) {
-                _password = value;
-              }, obscureText: true),
+              child: getTextField(_password, "Password", Icons.vpn_key_outlined,
+                  obscureText: true),
             ),
             Container(
               width: double.infinity,
@@ -71,10 +68,10 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
-  Widget getTextField(String labelText, IconData icon, Function saved,
+  Widget getTextField(TextEditingController controller, String labelText, IconData icon,
       {bool obscureText = false}) {
-    return TextFormField(
-      onSaved: saved,
+    return TextField(
+      controller: controller,
       obscureText: obscureText,
       decoration: InputDecoration(
         border: OutlineInputBorder(),
@@ -85,7 +82,7 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   void signIn() {
-    Toast.show("$_id, $_password", context,
+    Toast.show("Id is ${_id.text} ans Password is ${_password.text}", context,
         duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
   }
 }
