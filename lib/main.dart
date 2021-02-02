@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toast/toast.dart';
+import 'package:flutter0131/pages/sample01.dart';
 
 void main() {
   runApp(MyApp());
@@ -41,8 +41,8 @@ class _SignInPageState extends State<SignInPage> {
           children: [
             Container(
               margin: EdgeInsets.only(top: 24),
-              child: getTextField(_id, 
-                  "Username or email address", Icons.perm_identity),
+              child: getTextField(
+                  _id, "Username or email address", Icons.perm_identity),
             ),
             Container(
               margin: EdgeInsets.only(top: 16),
@@ -68,7 +68,8 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
-  Widget getTextField(TextEditingController controller, String labelText, IconData icon,
+  Widget getTextField(
+      TextEditingController controller, String labelText, IconData icon,
       {bool obscureText = false}) {
     return TextField(
       controller: controller,
@@ -82,7 +83,11 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   void signIn() {
-    Toast.show("Id is ${_id.text} ans Password is ${_password.text}", context,
-        duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+    // Toast.show("Id is ${_id.text} ans Password is ${_password.text}", context,
+    //     duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+    Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => Sample01()),
+  );
   }
 }
