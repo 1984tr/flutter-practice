@@ -14,28 +14,15 @@ class Sample01 extends StatelessWidget {
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
               SliverAppBar(
+                leading: Container(),
                 expandedHeight: 80,
-                pinned: true,
                 flexibleSpace: Container(
                   child: Column(children: [
                   AppBarTop(), AppBarMiddle()
                 ])
                 )),
               SliverPersistentHeader(
-                delegate: _SliverAppBarDelegate(
-                  TabBar(
-                    labelColor: Colors.black87,
-                    unselectedLabelColor: Colors.black26,
-                    tabs: [
-                      Tab(
-                        icon: Icon(Icons.account_box),
-                        text: "Detail",
-                      ),
-                      Tab(icon: Icon(Icons.add_location), text: "Address"),
-                      Tab(icon: Icon(Icons.monetization_on), text: "Earning"),
-                    ],
-                  ),
-                ),
+                delegate: _SliverAppBarDelegate(),
                 pinned: true,
               ),
             ];
@@ -50,21 +37,28 @@ class Sample01 extends StatelessWidget {
 }
 
 class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-    final TabBar _tabBar;
-
-    _SliverAppBarDelegate(this._tabBar);
 
     @override
-    double get minExtent => _tabBar.preferredSize.height;
+    double get minExtent => 40;
 
     @override
-    double get maxExtent => _tabBar.preferredSize.height;
+    double get maxExtent => 40;
 
     @override
     Widget build(
         BuildContext context, double shrinkOffset, bool overlapsContent) {
       return new Container(
-        child: _tabBar,
+        height: 40,
+        color: Colors.white,
+        child: TabBar(
+          labelColor: Colors.black87,
+          unselectedLabelColor: Colors.black26,
+          tabs: [
+            Tab(text: "Detail"),
+            Tab(text: "Address"),
+            Tab(text: "Earning"),
+          ],
+        ),
       );
     }
 
