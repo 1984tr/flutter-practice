@@ -11,31 +11,61 @@ class TabPage01 extends StatefulWidget {
 class _TabPage01State extends State<TabPage01> {
   @override
   Widget build(BuildContext context) {
-    return NestedScrollView(
-      headerSliverBuilder: (context, innerBoxIsScrolled) {
-            return [
-              SliverAppBar(
-                pinned: true,
-                leading: Container(),
-                expandedHeight: 80,
-                flexibleSpace: Container(
-                  child: Column(children: [
-                  AppBarTop(), AppBarMiddle()
-                ])
-                )),
-            ];
-          },
-          body: SliverGrid(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-          delegate: SliverChildListDelegate(
-            [
-              Container(color: Colors.blue),
-              Container(color: Colors.green),
-              Container(color: Colors.yellow),
-              Container(color: Colors.orange),
-              Container(color: Colors.blue),
-              Container(color: Colors.red),
-            ],
-          ),));
+    return CustomScrollView(
+      slivers: [
+        
+        // SliverAppBar(
+        //   toolbarHeight: 40,
+        //   elevation: 0,
+        //   pinned: true,
+        //   leading: Container(),
+        //   flexibleSpace: Container(
+        //     child: Column(children: [
+        //     AppBarTop()
+        //   ]))
+        //   ),
+        SliverGrid(
+          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 200.0,
+            mainAxisSpacing: 10.0,
+            crossAxisSpacing: 10.0,
+            childAspectRatio: 4.0,
+          ),
+          delegate: SliverChildBuilderDelegate(
+            (BuildContext context, int index) {
+              return Container(
+                alignment: Alignment.center,
+                color: Colors.teal[100 * (index % 9)],
+                child: Text('grid item $index'),
+              );
+            },
+            childCount: 100,
+          ),
+        )
+      ],
+    );
   }
 }
+
+class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
+
+    @override
+    double get minExtent => 40;
+
+    @override
+    double get maxExtent => 40;
+
+    @override
+    Widget build(
+        BuildContext context, double shrinkOffset, bool overlapsContent) {
+      return new Container(
+        height: 40,
+        color: Colors.amber,
+      );
+    }
+
+    @override
+    bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
+      return false;
+    }
+  }
