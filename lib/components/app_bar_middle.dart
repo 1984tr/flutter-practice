@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter0131/components/popup/search_popup.dart';
 
 class AppBarMiddle extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40,
-      color: Colors.red,    
-    );
+        width: double.infinity,
+        height: 40,
+        color: Colors.red,
+        child: Stack(
+          children: [
+            RaisedButton(
+                onPressed: () {
+                  var popup = SearchPopup(context);
+                  popup.open();
+                },
+                child: (Text("페이지2")))
+          ],
+        ));
   }
 }

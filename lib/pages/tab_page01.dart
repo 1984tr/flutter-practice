@@ -35,7 +35,7 @@ class _TabPage01State extends State<TabPage01> {
             (BuildContext context, int index) {
               return Container(
                 alignment: Alignment.center,
-                color: Colors.teal[100 * (index % 9)],
+                color: Colors.teal[40 * (index % 9)],
                 child: Text('grid item $index'),
               );
             },
@@ -46,26 +46,3 @@ class _TabPage01State extends State<TabPage01> {
     );
   }
 }
-
-class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-
-    @override
-    double get minExtent => 40;
-
-    @override
-    double get maxExtent => 40;
-
-    @override
-    Widget build(
-        BuildContext context, double shrinkOffset, bool overlapsContent) {
-      return new Container(
-        height: 40,
-        color: Colors.amber,
-      );
-    }
-
-    @override
-    bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
-      return false;
-    }
-  }

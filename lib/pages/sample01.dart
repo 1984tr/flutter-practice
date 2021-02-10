@@ -23,7 +23,7 @@ class Sample01 extends StatelessWidget {
                 ])
                 )),
               SliverPersistentHeader(
-                delegate: _SliverAppBarDelegate(),
+                delegate: _SliverTabBarHeader(),
                 pinned: true,
               ),
             ];
@@ -37,34 +37,54 @@ class Sample01 extends StatelessWidget {
   }
 }
 
-class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
+class _SliverLogoBar extends SliverPersistentHeaderDelegate {
 
-    @override
-    double get minExtent => 40;
+  @override
+  double get minExtent => 40;
 
-    @override
-    double get maxExtent => 40;
+  @override
+  double get maxExtent => 40;
 
-    @override
-    Widget build(
-        BuildContext context, double shrinkOffset, bool overlapsContent) {
-      return new Container(
-        height: 40,
-        color: Colors.white,
-        child: TabBar(
-          labelColor: Colors.black87,
-          unselectedLabelColor: Colors.black26,
-          tabs: [
-            Tab(text: "Detail"),
-            Tab(text: "Address"),
-            Tab(text: "Earning"),
-          ],
-        ),
-      );
-    }
-
-    @override
-    bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
-      return false;
-    }
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return AppBarTop();
   }
+
+  @override
+  bool shouldRebuild(_SliverTabBarHeader oldDelegate) {
+    return false;
+  }
+}
+
+class _SliverTabBarHeader extends SliverPersistentHeaderDelegate {
+
+  @override
+  double get minExtent => 40;
+
+  @override
+  double get maxExtent => 40;
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return new Container(
+      height: 40,
+      color: Colors.white,
+      child: TabBar(
+        labelColor: Colors.black87,
+        unselectedLabelColor: Colors.black26,
+        tabs: [
+          Tab(text: "Detail"),
+          Tab(text: "Address"),
+          Tab(text: "Earning"),
+        ],
+      ),
+    );
+  }
+
+  @override
+  bool shouldRebuild(_SliverTabBarHeader oldDelegate) {
+    return false;
+  }
+}
