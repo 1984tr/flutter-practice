@@ -4,6 +4,7 @@ import 'package:flutter0131/components/app_bar_middle.dart';
 import 'package:flutter0131/components/app_bar_top.dart';
 import 'package:flutter0131/pages/tab_page01.dart';
 import 'package:flutter0131/pages/tab_page02.dart';
+import 'package:flutter0131/pages/tab_page03.dart';
 
 class Sample01 extends StatelessWidget {
   @override
@@ -31,7 +32,7 @@ class Sample01 extends StatelessWidget {
           },
           body: TabBarView(
             children: [
-              TabPage01(),TabPage02(),Text("3")
+              TabPage01(),TabPage02(),TabPage03()
             ],
           )))
     ));
