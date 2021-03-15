@@ -37,12 +37,16 @@ class _Practice01State extends State<Practice01> {
               })
             },
           ),
-          Container(color: Colors.lightGreen,
-          child: Row(
-            children: [
-            Text("Col1"),
-            Text("Col2")
-          ],))
+          Container(
+              color: Colors.lightGreen,
+              child: Row(children: [Text("Col1"), Text("Col2")])),
+          Table(
+              children: List.generate(3, (i) {
+            return TableRow(
+                children: List.generate(5, (j) {
+              return Text("$i + $j");
+            }));
+          }))
         ])));
   }
 }

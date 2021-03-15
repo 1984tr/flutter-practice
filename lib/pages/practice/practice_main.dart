@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter0131/pages/practice/practice01.dart';
+import 'package:flutter0131/pages/practice/practice02.dart';
 
 class PracticeMain extends StatefulWidget {
   @override
@@ -20,7 +21,12 @@ class _PracticeMainState extends State<PracticeMain> {
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Practice01()));
-                }, child: Text("Practice01"))
+                }, child: Text("Practice01")),
+            RaisedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Practice02()));
+                }, child: Text("Practice02"))
           ],
         ),
       ),
